@@ -1,7 +1,7 @@
 import React from 'react'
 import request from 'superagent'
 
-import UserList from './UserList'
+import AddDev from './AddDev'
 
 class App extends React.Component {
     constructor(props) {
@@ -25,13 +25,15 @@ loadUsers() {
       })
   })
 }
+
     render() {
         return (
             <div>
                 <h1>Ready!</h1>
              {this.state.users.map((user) => {
-                 return <li key={user.id}> {user.name} </li>
+                 return <li key={user.id}>{user.name} <br/>{user.email} </li>
              })}
+             <AddDev refresh={this.loadUsers}/>
             </div>
         )
     }

@@ -25,5 +25,12 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  db.addUser(req.body.newDev)
+  .then(() => {
+    res.status(200).send()
+  })
+})
+
 module.exports = router
 

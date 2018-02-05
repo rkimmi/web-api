@@ -19235,9 +19235,9 @@ var _superagent = __webpack_require__(14);
 
 var _superagent2 = _interopRequireDefault(_superagent);
 
-var _UserList = __webpack_require__(35);
+var _AddDev = __webpack_require__(35);
 
-var _UserList2 = _interopRequireDefault(_UserList);
+var _AddDev2 = _interopRequireDefault(_AddDev);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19293,11 +19293,14 @@ var App = function (_React$Component) {
                     return _react2.default.createElement(
                         'li',
                         { key: user.id },
-                        ' ',
                         user.name,
+                        ' ',
+                        _react2.default.createElement('br', null),
+                        user.email,
                         ' '
                     );
-                })
+                }),
+                _react2.default.createElement(_AddDev2.default, { refresh: this.loadUsers })
             );
         }
     }]);
@@ -20430,8 +20433,10 @@ module.exports = Agent;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(2);
 
@@ -20443,9 +20448,68 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var UserList = function UserList(props) {};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-exports.default = UserList;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AddDev = function (_React$Component) {
+    _inherits(AddDev, _React$Component);
+
+    function AddDev(props) {
+        _classCallCheck(this, AddDev);
+
+        var _this = _possibleConstructorReturn(this, (AddDev.__proto__ || Object.getPrototypeOf(AddDev)).call(this, props));
+
+        _this.state = {
+            newDev: ''
+        };
+        _this.handleChange = _this.handleChange.bind(_this);
+        _this.handleClick = _this.handleClick.bind(_this);
+        return _this;
+    }
+
+    _createClass(AddDev, [{
+        key: 'handleChange',
+        value: function handleChange(e) {
+            this.setState = _defineProperty({}, e.target.name, e.target.value);
+        }
+    }, {
+        key: 'handleClick',
+        value: function handleClick(e) {
+            var _this2 = this;
+
+            _superagent2.default.post('/users').set('Content-Type', 'application/json').send(this.state).then(function () {
+                _this2.props.refresh();
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'form',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement('input', { name: 'name', onChange: this.handleChange }),
+                    _react2.default.createElement(
+                        'button',
+                        { type: 'button', onClick: this.handleClick },
+                        ' Add user '
+                    )
+                )
+            );
+        }
+    }]);
+
+    return AddDev;
+}(_react2.default.Component);
+
+exports.default = AddDev;
 
 /***/ })
 /******/ ]);
