@@ -1,11 +1,11 @@
 import React from 'react'
 import request from 'superagent'
 
-class AddDev extends React.Component {
+class AddUser extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            newDev: ''
+            newUser: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -39,4 +39,4 @@ class AddDev extends React.Component {
     }
 }
 
-export default AddDev
+export default AddUser

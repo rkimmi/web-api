@@ -2,7 +2,7 @@ import React from 'react'
 import request from 'superagent'
 import {Link} from 'react-router-dom'
 
-import AddDev from './AddDev'
+import AddUser from './AddUser'
 
 class UserList extends React.Component {
     constructor(props) {
@@ -33,7 +33,7 @@ render() {
          {this.state.users.map((user) => {
              return <li key={user.id}><Link to={`/users/${user.id}`}> {user.name} </Link></li>
          })}
-         <AddDev refresh={this.loadUsers}/>
+         <AddUser refresh={this.loadUsers}/>
         </div>
     )
 }

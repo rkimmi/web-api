@@ -3,6 +3,7 @@ import {HashRouter as Router, Route} from 'react-router-dom'
 import request from 'superagent'
 
 import UserList from './UserList'
+import UserProfile from './UserProfile'
 
 class App extends React.Component {
     constructor(props) {
@@ -32,6 +33,7 @@ loadUsers() {
             <Router>
             <div>
              <Route exact path='/' component={UserList} />
+             <Route path='/users/:id' component={UserProfile} />
             </div>
             </Router>
         )
