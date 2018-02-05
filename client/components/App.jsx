@@ -1,7 +1,8 @@
 import React from 'react'
+import {HashRouter as Router, Route} from 'react-router-dom'
 import request from 'superagent'
 
-import AddDev from './AddDev'
+import UserList from './UserList'
 
 class App extends React.Component {
     constructor(props) {
@@ -28,13 +29,11 @@ loadUsers() {
 
     render() {
         return (
+            <Router>
             <div>
-                <h1>Ready!</h1>
-             {this.state.users.map((user) => {
-                 return <li key={user.id}>{user.name} <br/>{user.email} </li>
-             })}
-             <AddDev refresh={this.loadUsers}/>
+             <Route exact path='/' component={UserList} />
             </div>
+            </Router>
         )
     }
 }
