@@ -1,5 +1,6 @@
 import React from 'react'
 import request from 'superagent'
+import {Link} from 'react-router-dom'
 
 import AddDev from './AddDev'
 
@@ -30,7 +31,7 @@ render() {
         <div>
             <h1>Listing Users...</h1>
          {this.state.users.map((user) => {
-             return <li key={user.id}>{user.name} <br/>{user.email} </li>
+             return <li key={user.id}><Link to={`/users/${user.id}`}> {user.name} </Link></li>
          })}
          <AddDev refresh={this.loadUsers}/>
         </div>
