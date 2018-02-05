@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  db.addUser(req.body.newDev)
+  db.addUser(req.body)
   .then(() => {
     res.status(200).send()
   })

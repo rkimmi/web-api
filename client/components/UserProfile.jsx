@@ -8,6 +8,7 @@ class UserProfile extends React.Component {
        this.state = {
            user:  {} // just one
        }
+       this.showUser = this.showUser.bind(this)
     }
 
 componentDidMount() {
@@ -16,18 +17,18 @@ componentDidMount() {
 
 showUser() {
     request 
-    .get(`/users/${this.props.match.params.id}`)
+    .get(`/api/v1/users/${this.props.match.params.id}`)
     .then(res => {
-        this.setState = {
+        this.setState({
             user: res.body.user
-        }
+        })
     })
 }
 
     render () {
         return (
             <div>
-                <h2>Name:</h2><h3>{this.state.user.name}</h3>
+                <h2>Name:</h2><h3>{this.state.user.name}</h3> 
                 <h2>Email:</h2><h3>{this.state.user.email}</h3>
             </div>
         ) 

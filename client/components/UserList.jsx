@@ -10,6 +10,7 @@ class UserList extends React.Component {
     this.state = {
         users: []
     }
+    this.loadUsers = this.loadUsers.bind(this)
 }
 
 componentDidMount() {
@@ -18,9 +19,9 @@ this.loadUsers()
 
 loadUsers() {
 request
-.get('/users')
+.get('/api/v1/users')
 .then(res => {
-  this.setState( {
+  this.setState({
       users: res.body.users
   })
 })

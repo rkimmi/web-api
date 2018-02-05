@@ -20,6 +20,8 @@ function getUser (id, testDb) {
 
 function addUser (user, testDb) {
   const db = testDb || connection
-  return db('users').insert()
+  return db('users').insert({
+    name: user.name
+  })
 }
 

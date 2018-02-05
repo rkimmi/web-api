@@ -8,25 +8,7 @@ import UserProfile from './UserProfile'
 class App extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            users: []
-        }
     }
-
-componentDidMount() {
-  this.loadUsers()
-}
-
-loadUsers() {
-  request
-  .get('/users')
-  .then(res => {
-      console.log(res)
-      this.setState( {
-          users: res.body.users
-      })
-  })
-}
 
     render() {
         return (

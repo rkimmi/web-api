@@ -11,7 +11,7 @@ server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, './public')))
 
 // Routes
-server.use('/users', users)
+server.use('/api/v1/users', users)
 
 
 module.exports = server

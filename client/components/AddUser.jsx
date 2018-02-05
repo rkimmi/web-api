@@ -5,21 +5,21 @@ class AddUser extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            newUser: ''
+            name: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
     }
 
     handleChange(e) {
-     this.setState = ({
-       [e.target.name]: e.target.value
+     this.setState({
+       [e.target.name]: e.target.value // used on event handlers 
      })
     }
 
     handleClick(e) {
         request 
-        .post('/users')
+        .post('/api/v1/users')
         .set('Content-Type', 'application/json')
         .send(this.state)
         .then(() => {
